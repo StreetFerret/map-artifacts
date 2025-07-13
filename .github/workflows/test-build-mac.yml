@@ -9,11 +9,14 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
+      - name: Install system dependencies
+        run: |
+          brew install pkg-config cairo pango libpng jpeg giflib librsvg
       - name: Install and Build 🔧
         run: |
           npm ci --include=dev
